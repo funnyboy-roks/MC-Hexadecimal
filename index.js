@@ -1,5 +1,5 @@
 function convertToMC() {
-  let hexIn = document.querySelector("#hex-in").value;
+  hexIn = document.querySelector("#hex-in").value;
   hexIn = hexIn.replace("#", "");
   let output = "Not A Hex Code";
   matchRegex = hexIn.match(/[0-9a-f]{6}|[0-9a-f]{3}/i);
@@ -20,5 +20,6 @@ function convertToMC() {
   }
 
   // return hexIn
+  document.querySelector("html").style.background = "#" + hexIn;
   document.querySelector("#out").innerText = output;
 }
