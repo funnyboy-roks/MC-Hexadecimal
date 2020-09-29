@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hexadecimal to MC Conversion</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="content">
-        <input type="text" name="hex-in" id="hex-in" placeholder="Hexadecimal Code" oninput="convertToMC(this);">
-        <!-- <button type="submit" onclick="convertToMC()">Convert To MC</button> -->
-        <p id="out">OUTPUT</p>
+        <div id="in-out">
+            <input type="text" name="hex-in" id="hex-in" placeholder="Hexadecimal Code" oninput="convertToMC(this);">
+            <!-- <button type="submit" onclick="convertToMC()">Convert To MC</button> -->
+            <p id="out">OUTPUT</p>
+        </div>
     </div>
 
     <script src="index.js"></script>
 </body>
+
 </html>

@@ -11,18 +11,30 @@ html {
 }
 
 .content {
-  width: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  vertical-align: center;
 }
 
 input,
 button,
-p#out {
+#out {
+  min-width: 75vw;
+  width: 100%;
   text-align: center;
   display: block;
-  width: 100%;
   font-size: 4em;
+}
+
+input{
+  background: #fff5;
+  outline: none;
+  border: none;
+}
+
+#in-out{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

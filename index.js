@@ -40,11 +40,16 @@ function convertToMC(obj) {
 
     if (luma < 100) {
       document.querySelector("#out").style.color = "#fff";
+      // document.querySelector("input").style.background = "#fffa";
+
     } else {
       document.querySelector("#out").style.color = "#000";
+      // document.querySelector("input").style.background = "none";
+
     }
   } else {
     document.querySelector("#out").style.color = "#000";
+    // document.querySelector("input").style.background = "none";
   }
 
   // return hexIn
