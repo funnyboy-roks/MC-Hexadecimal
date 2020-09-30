@@ -25,7 +25,8 @@
         .n {
             text-decoration: underline;
         }
-        .n.m{
+
+        .n.m {
             text-decoration: underline line-through;
         }
     </style>
@@ -40,27 +41,31 @@
         Colour 2: <input type="color" class="picker" id="picker2"
             oninput="createGradFromName(document.querySelector('#nameField').value);"><br>
 
-        <label class="l">Bold: <input type="checkbox" name="formatting" id="bold"
-                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+        <label class="l" id="bold">Bold: </label>
+        <input type="checkbox" name="formatting" id="bold"
+            oninput="createGradFromName(document.querySelector('#nameField').value);">
 
-        <label class="o">Italics: <input type="checkbox" name="formatting" id="italics"
-                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+        <label class="o" id="italics">Italics: </label>
+        <input type="checkbox" name="formatting" id="italics"
+            oninput="createGradFromName(document.querySelector('#nameField').value);">
 
-        <label class="m">Strikethrough: <input type="checkbox" name="formatting" id="strikethrough"
-                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+        <label class="m" id="strikethrough">Strikethrough: </label>
+        <input type="checkbox" name="formatting" id="strikethrough"
+            oninput="createGradFromName(document.querySelector('#nameField').value);">
 
-        <label class="n">Underline: <input type="checkbox" name="formatting" id="underline"
-                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+        <label class="n" id="underline">Underline: </label>
+        <input type="checkbox" name="formatting" id="underline"
+            oninput="createGradFromName(document.querySelector('#nameField').value);">
         <br>
         Name: <input type="text" id="nameField" oninput="createGradFromName(this.value);">
     </div>
 
     <p id="out-coloured"></p>
-    Colours: <input id="out-colour" type="text" readonly title="Click To Copy" onclick="
+    <label id="colours">Colours: </label><input id="out-colour" type="text" readonly title="Click To Copy" onclick="
     this.select();
     document.execCommand('copy');
     ">
-    /nick Command: <input id="out-nick" type="text" readonly title="Click To Copy" onclick="
+    <label id="nick">/nick Command: </label><input id="out-nick" type="text" readonly title="Click To Copy" onclick="
     this.select();
     document.execCommand('copy');
     ">

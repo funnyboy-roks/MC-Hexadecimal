@@ -1,3 +1,6 @@
+const coloursOutLabel = document.querySelector("#colours");
+const nickOutLabel = document.querySelector("#nick")
+
 function createGradient(count, c1, c2){
     var rainbow = new Rainbow(); 
     rainbow.setNumberRange(1, count);
@@ -16,10 +19,10 @@ function createGradFromName(name){
     let c1 = document.querySelector('#picker1').value;
     let c2 = document.querySelector('#picker2').value;
     formatting = {
-     l: document.querySelector('#bold').checked,
-     o: document.querySelector('#italics').checked,
-     m: document.querySelector('#strikethrough').checked,
-     n: document.querySelector('#underline').checked,
+     l: document.querySelector('input#bold').checked,
+     o: document.querySelector('input#italics').checked,
+     m: document.querySelector('input#strikethrough').checked,
+     n: document.querySelector('input#underline').checked,
     };
     formattingClasses = "";
     formattingCodes = "";
@@ -42,7 +45,8 @@ function createGradFromName(name){
     }
 
     
-
+    coloursOutLabel.innerText = `Colours (${colourCodeStr.length} chars):`;
+    nickOutLabel.innerText = `/nick Command (${("/nick + " + colourCodeStr).length} chars):`;
     document.querySelector("#out-coloured").innerHTML = colouredString;
     document.querySelector("#out-colour").value = colourCodeStr;
     document.querySelector("#out-nick").value = "/nick " + colourCodeStr;
