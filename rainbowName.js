@@ -15,14 +15,30 @@ function createGradFromName(name){
     let count = name.length;
     let c1 = document.querySelector('#picker1').value;
     let c2 = document.querySelector('#picker2').value;
+    formatting = {
+     l: document.querySelector('#bold').checked,
+     o: document.querySelector('#italics').checked,
+     m: document.querySelector('#strikethrough').checked,
+     n: document.querySelector('#underline').checked,
+    };
+    formattingClasses = "";
+    formattingCodes = "";
+    for (k in formatting){
+        if(formatting[k]){
+            formattingClasses += k + ' ';
+            formattingCodes += '&' + k;
+        } 
+    }
+    formattingClasses = formattingClasses.trim();
+    formattingCodes = formattingCodes.trim();
 
     colours = createGradient(count, c1, c2);
 
     let colouredString = '';
     let colourCodeStr  = '';
     for (let i in colours){
-        colouredString +=  `<span style="color: ${colours[i]}">${name[i]}</span>`;
-        colourCodeStr += `${mcHex(colours[i])}${name[i]}`
+        colouredString +=  `<span style="color: ${colours[i]}" class="${formattingClasses}">${name[i]}</span>`;
+        colourCodeStr += mcHex(colours[i]) + formattingCodes + name[i]
     }
 
     

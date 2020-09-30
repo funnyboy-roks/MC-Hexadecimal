@@ -5,19 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        input[type="text"] {
-            width: 100%;
+        input[type="text"],
+        p {
+            width: 75%;
+        }
+
+        .l {
+            font-weight: bold;
+        }
+
+        .o {
+            font-style: italic;
+        }
+
+        .m {
+            text-decoration: line-through;
+        }
+
+        .n {
+            text-decoration: underline;
+        }
+        .n.m{
+            text-decoration: underline line-through;
         }
     </style>
     <title>Gradient Name</title>
 </head>
 
 <body>
-    Colour 1: <input type="color" class="picker" id="picker1"
-        oninput="createGradFromName(document.querySelector('#nameField').value);">
-    Colour 2: <input type="color" class="picker" id="picker2"
-        oninput="createGradFromName(document.querySelector('#nameField').value);"><br>
-    Name: <input type="text" id="nameField" oninput="createGradFromName(this.value);">
+
+    <div id="input">
+        Colour 1: <input type="color" class="picker" id="picker1"
+            oninput="createGradFromName(document.querySelector('#nameField').value);">
+        Colour 2: <input type="color" class="picker" id="picker2"
+            oninput="createGradFromName(document.querySelector('#nameField').value);"><br>
+
+        <label class="l">Bold: <input type="checkbox" name="formatting" id="bold"
+                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+
+        <label class="o">Italics: <input type="checkbox" name="formatting" id="italics"
+                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+
+        <label class="m">Strikethrough: <input type="checkbox" name="formatting" id="strikethrough"
+                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+
+        <label class="n">Underline: <input type="checkbox" name="formatting" id="underline"
+                oninput="createGradFromName(document.querySelector('#nameField').value);"></label>
+        <br>
+        Name: <input type="text" id="nameField" oninput="createGradFromName(this.value);">
+    </div>
 
     <p id="out-coloured"></p>
     Colours: <input id="out-colour" type="text" readonly title="Click To Copy" onclick="
