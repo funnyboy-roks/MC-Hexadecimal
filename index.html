@@ -11,12 +11,14 @@
 <body>
     <div class="content">
         <div id="in-out">
-            <input type="text" name="hex-in" id="hex-in" placeholder="Hexadecimal Code" oninput="convertToMC(this);">
+            <input type="text" name="hex-in" id="hex-in" placeholder="Hexadecimal Code" oninput="onInputGiven(this.value);">
             <!-- <button type="submit" onclick="convertToMC()">Convert To MC</button> -->
             <p id="out">OUTPUT</p>
         </div>
     </div>
 
+    <script src="mcConverter.js"></script>
+    <script src="rainbowvis.js"></script>
     <script src="index.js"></script>
 </body>
 

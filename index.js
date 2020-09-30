@@ -1,42 +1,27 @@
 inField = document.querySelector("#hex-in");
 inField.value = location.hash;
-convertToMC(inField);
+onInputGiven(inField.value);
 
-function convertToMC(obj) {
-  obj.value = obj.value.replace(/[^0-9a-f#]/g, '');
-  let maxLen = obj.value.startsWith('#') ? 7 : 6;
-  obj.value = obj.value.substring(0, maxLen)
+function onInputGiven(value) {
+  inField.value = value.replace(/[^0-9a-f#]/g, '');
+  let maxLen = value.startsWith('#') ? 7 : 6;
+  inField.value = value.substring(0, maxLen)
 
-  if (obj.value.startsWith('#')) {
-    obj.value = '#' + obj.value.substring(1).replace(/#/g, '');
+  if (value.startsWith('#')) {
+    inField.value = '#' + value.substring(1).replace(/#/g, '');
   } else {
-    obj.value = '#' + obj.value.replace(/#/g, '');
+    inField.value = '#' + value.replace(/#/g, '');
 
   }
 
-  hexIn = obj.value.replace(/#/g, "");
-  output = "";
-  matchRegex = hexIn.match(/[0-9a-f]{6}|[0-9a-f]{3}/i);
-  if ((hexIn.length == 6 || hexIn.length == 3) && matchRegex) {
-    if (matchRegex[0] == hexIn) {
-      output = "&x";
-      if (hexIn.length == 3) {
-        temp = "";
-        for (x of hexIn) {
-          temp += x + x;
-        }
-        hexIn = temp;
-      }
-      for (x of hexIn) {
-        output += `&${x}`;
-      }
-    }
-    var rgb = parseInt(hexIn, 16); // convert rrggbb to decimal
-    var r = (rgb >> 16) & 0xff; // extract red
-    var g = (rgb >> 8) & 0xff; // extract green
-    var b = (rgb >> 0) & 0xff; // extract blue
+  output = mcHex(value);
 
-    var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+  let rgb = parseInt(value, 16); // convert rrggbb to decimal
+    let r = (rgb >> 16) & 0x00; // extract red
+    let g = (rgb >> 8) & 0x00; // extract green
+    let b = (rgb >> 0) & 0x00; // extract blue
+
+    let luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
     if (luma < 100) {
       document.querySelector("#out").style.color = "#fff";
@@ -47,13 +32,9 @@ function convertToMC(obj) {
       // document.querySelector("input").style.background = "none";
 
     }
-  } else {
-    document.querySelector("#out").style.color = "#000";
-    // document.querySelector("input").style.background = "none";
-  }
-
   // return hexIn
-  location.hash = hexIn;
-  document.querySelector("html").style.background = "#" + hexIn;
+  location.hash = value;
+  document.querySelector("html").style.background = value;
   document.querySelector("#out").innerText = output;
 }
+
