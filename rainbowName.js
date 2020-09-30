@@ -28,7 +28,9 @@ function createGradFromName(name){
     
 
     document.querySelector("#out-coloured").innerHTML = colouredString;
-    document.querySelector("#out").value = colourCodeStr;
+    document.querySelector("#out-colour").value = colourCodeStr;
+    document.querySelector("#out-nick").value = "/nick " + colourCodeStr;
+
     return colouredString;
 
 }

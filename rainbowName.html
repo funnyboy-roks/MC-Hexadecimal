@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input[type="text"] {
+            width: 100%;
+        }
+    </style>
     <title>Gradient Name</title>
 </head>
+
 <body>
-    <input type="color" class="picker" id="picker1">Colour 1
-    <input type="color" class="picker" id="picker2">Colour 2
+    Colour 1: <input type="color" class="picker" id="picker1"
+        oninput="createGradFromName(document.querySelector('#nameField').value);">
+    Colour 2: <input type="color" class="picker" id="picker2"
+        oninput="createGradFromName(document.querySelector('#nameField').value);"><br>
+    Name: <input type="text" id="nameField" oninput="createGradFromName(this.value);">
 
     <p id="out-coloured"></p>
-    <input id="out" type="text" readonly>
-    
+    Colours: <input id="out-colour" type="text" readonly title="Click To Copy" onclick="
+    this.select();
+    document.execCommand('copy');
+    ">
+    /nick Command: <input id="out-nick" type="text" readonly title="Click To Copy" onclick="
+    this.select();
+    document.execCommand('copy');
+    ">
+
     <script src="mcConverter.js"></script>
     <script src="rainbowvis.js"></script>
     <script src="rainbowName.js"></script>
 </body>
+
 </html>
