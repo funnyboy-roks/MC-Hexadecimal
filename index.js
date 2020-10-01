@@ -37,4 +37,3 @@ function onInputGiven(value) {
   document.querySelector("html").style.background = value;
   document.querySelector("#out").innerText = output;
 }
-
