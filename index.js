@@ -1,9 +1,9 @@
-inField = document.querySelector("#hex-in");
+const inField = document.querySelector("#hex-in");
 inField.value = location.hash;
 onInputGiven(inField.value);
 
 function onInputGiven(value) {
-  inField.value = value.replace(/[^0-9a-f#]/g, '');
+  value = value.replace(/[^0-9a-fA-F#]/g, '');
   let maxLen = value.startsWith('#') ? 7 : 6;
   inField.value = value.substring(0, maxLen)
 
