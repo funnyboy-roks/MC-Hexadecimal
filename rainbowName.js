@@ -35,7 +35,7 @@ function createGradFromName(name){
     formattingClasses = formattingClasses.trim();
     formattingCodes = formattingCodes.trim();
 
-    colours = createGradient(count, [c1, c2]);
+    colours = createGradient(count, getPickerColours());
 
     let colouredString = '';
     let colourCodeStr  = '';

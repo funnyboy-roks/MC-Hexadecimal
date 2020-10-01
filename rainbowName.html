@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
         input[type="text"],
         p {
             width: 75%;
@@ -34,6 +39,7 @@
 
         .colour-pickers {
             cursor: grab;
+
         }
 
         .draggable-source--is-dragging,
@@ -45,65 +51,67 @@
         .draggable-container--is-dragging {
             cursor: grabbing;
         }
+
+        .out-only {
+            background: none;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+        .delete{
+            color: red;
+            font-size: 2em;
+            cursor: pointer;
+        }
     </style>
     <title>Gradient Name</title>
 </head>
 
 <body>
-    <div class="colour-pickers">
-        <button onclick="addColourPicker();">Add Colour</button>
-        <!-- <div class="colour-picker">=Colour #0:
-            <input type="color" id="color-picker-1" value="#ff00ff">
-        </div> -->
-        <!-- <div class="colour-picker">=Colour #1: <input type="color" id="color-picker-0" value="#ff00ff"></div>
-        <div class="colour-picker">=Colour #2: <input type="color" id="color-picker-0" value="#ff00ff"></div>
-        <div class="colour-picker">=Colour #3: <input type="color" id="color-picker-0" value="#ff00ff"></div>
-        <div class="colour-picker">=Colour #4: <input type="color" id="color-picker-0" value="#ff00ff"></div>
-        <div class="colour-picker">=Colour #5: <input type="color" id="color-picker-0" value="#ff00ff"></div>
-        <div class="colour-picker">=Colour #6: <input type="color" id="color-picker-0" value="#ff00ff"></div> -->
+    <div class="content">
+        <div class="colour-pickers">
 
-    </div>
+            <button onclick="addColourPicker();">Add Colour</button>
 
-    <ul>
-        <li>test1</li>
-        <li>test2</li>
-        <li>test3</li>
-    </ul>
+        </div>
 
-    <div id="input">
-        Colour 1: <input type="color" class="picker" id="picker1"
-            oninput="createGradFromName(document.querySelector('#nameField').value);">
-        Colour 2: <input type="color" class="picker" id="picker2"
-            oninput="createGradFromName(document.querySelector('#nameField').value);"><br>
+        <div id="input">
+            <!-- Colour 1: <input type="color" class="picker" id="picker1"
+                oninput="createGradFromName(document.querySelector('#nameField').value);">
+            Colour 2: <input type="color" class="picker" id="picker2"
+                oninput="createGradFromName(document.querySelector('#nameField').value);"><br> -->
 
-        <label class="l" id="bold">Bold: </label>
-        <input type="checkbox" name="formatting" id="bold"
-            oninput="createGradFromName(document.querySelector('#nameField').value);">
+            <label class="l" id="bold">Bold: </label>
+            <input type="checkbox" name="formatting" id="bold"
+                oninput="createGradFromName(document.querySelector('#nameField').value);">
 
-        <label class="o" id="italics">Italics: </label>
-        <input type="checkbox" name="formatting" id="italics"
-            oninput="createGradFromName(document.querySelector('#nameField').value);">
+            <label class="o" id="italics">Italics: </label>
+            <input type="checkbox" name="formatting" id="italics"
+                oninput="createGradFromName(document.querySelector('#nameField').value);">
 
-        <label class="m" id="strikethrough">Strikethrough: </label>
-        <input type="checkbox" name="formatting" id="strikethrough"
-            oninput="createGradFromName(document.querySelector('#nameField').value);">
+            <label class="m" id="strikethrough">Strikethrough: </label>
+            <input type="checkbox" name="formatting" id="strikethrough"
+                oninput="createGradFromName(document.querySelector('#nameField').value);">
 
-        <label class="n" id="underline">Underline: </label>
-        <input type="checkbox" name="formatting" id="underline"
-            oninput="createGradFromName(document.querySelector('#nameField').value);">
-        <br>
-        Name: <input type="text" id="nameField" oninput="createGradFromName(this.value);">
-    </div>
+            <label class="n" id="underline">Underline: </label>
+            <input type="checkbox" name="formatting" id="underline"
+                oninput="createGradFromName(document.querySelector('#nameField').value);">
+            <br>
+            Name: <input type="text" id="nameField" oninput="createGradFromName(this.value);">
+        </div>
 
-    <p id="out-coloured"></p>
-    <label id="colours">Colours: </label><input id="out-colour" type="text" readonly title="Click To Copy" onclick="
+        <p id="out-coloured"></p>
+        <label id="colours">Colours: </label><input id="out-colour" class="out-only" type="text" readonly
+            title="Click To Copy" onclick="
     this.select();
     document.execCommand('copy');
     ">
-    <label id="nick">/nick Command: </label><input id="out-nick" type="text" readonly title="Click To Copy" onclick="
+        <label id="nick">/nick Command: </label><input id="out-nick" class="out-only" type="text" readonly
+            title="Click To Copy" onclick="
     this.select();
     document.execCommand('copy');
     ">
+    </div>
 
 
     <!-- Entire bundle -->
@@ -118,7 +126,6 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/swappable.js"></script> -->
     <!-- Plugins only -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/plugins.js"></script> -->
-
     <script src="rainbowvis.js"></script>
     <script src="mcConverter.js"></script>
     <script src="colourPickers.js"></script>
