@@ -1,10 +1,10 @@
 const coloursOutLabel = document.querySelector("#colours");
 const nickOutLabel = document.querySelector("#nick")
 
-function createGradient(count, c1, c2){
+function createGradient(count, coloursArr){
     var rainbow = new Rainbow(); 
     rainbow.setNumberRange(1, count);
-    rainbow.setSpectrum(c1, c2);
+    rainbow.setSpectrumByArray(coloursArr);
     var hexCodes = [];
     for (var i = 1; i <= count; i++) {
         var hexColour = rainbow.colourAt(i);
@@ -35,7 +35,7 @@ function createGradFromName(name){
     formattingClasses = formattingClasses.trim();
     formattingCodes = formattingCodes.trim();
 
-    colours = createGradient(count, c1, c2);
+    colours = createGradient(count, [c1, c2]);
 
     let colouredString = '';
     let colourCodeStr  = '';
