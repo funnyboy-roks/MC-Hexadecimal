@@ -19,8 +19,8 @@ draggable.on('sortable:stop', (sortableEvent) => {
 function addColourPicker() {
     var newDiv = document.createElement('div');
     newDiv.classList.add('colour-picker');
-    newDiv.innerHTML = `=Colour #${pickers.length+1}: <input type="color" id="color-picker-${pickers.length}" value="#000000" oninput="updateColourPicker(${pickers.length});"><a class="delete" title="Remove Colour" onclick="removeColourPicker(${pickers.length});">×</a>`
-    var newInput = newDiv.querySelector(`#color-picker-${pickers.length}`);
+    newDiv.innerHTML = `=Colour #${pickers.length+1}: <input type="color" id="i${pickers.length}" value="#000000" oninput="updateColourPicker(this.id.substring(1));"><a class="delete" title="Remove Colour" onclick="removeColourPicker(this.id.substring(1));">×</a>`
+    var newInput = newDiv.querySelector(`#i${pickers.length}`);
     colourPickerDiv.appendChild(newDiv);
     pickers.push({
         div: newDiv,
@@ -40,7 +40,9 @@ function colourPickersSwap(id1, id2){
     if(id1 == id2)
         return;
     var temp = pickers[id1];
+    pickers[id2].input.id = 'i' + id1;
     pickers[id1] = pickers[id2];
+    temp.input.id = 'i' + id2;
     pickers[id2] = temp;
 
 }
