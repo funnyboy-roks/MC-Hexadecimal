@@ -8,6 +8,13 @@ const draggable = new Draggable.Sortable(document.querySelectorAll('div.colour-p
 //   });
 
 let pickers = [];
+draggable.on('sortable:stop', (sortableEvent) => {
+    // updateColourPickers();
+    console.log(sortableEvent.oldIndex, sortableEvent.newIndex)
+    colourPickersSwap(sortableEvent.oldIndex, sortableEvent.newIndex);
+    createGradFromName(document.querySelector('#nameField').value);
+    // console.log(draggable);
+});
 
 function addColourPicker() {
     var newDiv = document.createElement('div');
@@ -26,9 +33,16 @@ function addColourPicker() {
 
 function updateColourPicker(id) {
     pickers[id].value = pickers[id].input.value;
-    if(pickers.length > 2){
-        createGradFromName(document.querySelector('#nameField').value);
-    }
+    createGradFromName(document.querySelector('#nameField').value);
+}
+
+function colourPickersSwap(id1, id2){
+    if(id1 == id2)
+        return;
+    var temp = pickers[id1];
+    pickers[id1] = pickers[id2];
+    pickers[id2] = temp;
+
 }
 
 function getPickerColours() {
