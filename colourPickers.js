@@ -26,6 +26,9 @@ function addColourPicker() {
 
 function updateColourPicker(id) {
     pickers[id].value = pickers[id].input.value;
+    if(pickers.length > 2){
+        createGradFromName(document.querySelector('#nameField').value);
+    }
 }
 
 function getPickerColours() {

@@ -14,10 +14,12 @@ function createGradient(count, coloursArr){
 }
 
 function createGradFromName(name){
+    colourValues = [];
+    pickers.forEach(x => {
+        colourValues.push(x.value);
+    });
     name = name.trim();
     let count = name.length;
-    let c1 = document.querySelector('#picker1').value;
-    let c2 = document.querySelector('#picker2').value;
     formatting = {
      l: document.querySelector('input#bold').checked,
      o: document.querySelector('input#italics').checked,
@@ -35,7 +37,7 @@ function createGradFromName(name){
     formattingClasses = formattingClasses.trim();
     formattingCodes = formattingCodes.trim();
 
-    colours = createGradient(count, getPickerColours());
+    colours = createGradient(count, colourValues);
 
     let colouredString = '';
     let colourCodeStr  = '';
