@@ -7,13 +7,13 @@ const draggable = new Draggable.Sortable(document.querySelectorAll('div.colour-p
 //     // dropzone: 'div.colour-pickers'
 //   });
 
-pickers = [];
+let pickers = [];
 
 function addColourPicker() {
-    let newDiv = document.createElement('div');
+    var newDiv = document.createElement('div');
     newDiv.classList.add('colour-picker');
     newDiv.innerHTML = `=Colour #${pickers.length+1}: <input type="color" id="color-picker-${pickers.length}" value="#000000" oninput="updateColourPicker(${pickers.length});"><a class="delete" title="Remove Colour" onclick="removeColourPicker(${pickers.length});">×</a>`
-    newInput = newDiv.querySelector(`#color-picker-${pickers.length}`);
+    var newInput = newDiv.querySelector(`#color-picker-${pickers.length}`);
     colourPickerDiv.appendChild(newDiv);
     pickers.push({
         div: newDiv,
@@ -45,28 +45,9 @@ function removeColourPicker(id) {
 }
 
 function updateColourPickers() {
-    // for (let x in colourPickerDiv.children) {
-    //     console.log(x);
-    //     if (x == "length" || x == "item" || x == "namedItem" || colourPickerDiv.children[x].tagName == "BUTTON") {
-    //         continue;
-    //     }
-    //     newInput = colourPickerDiv.children[x].querySelector(`input`)
-    //     arr.push({
-    //         div: colourPickerDiv.children[x],
-    //         input: newInput,
-    //         id: `color-picker-${x}`,
-    //         value: newInput.value,
-    //         pos: x,
-    //     })
-    // }
     if (pickers.length == colourPickerDiv.childElementCount - 1) {
         return;
     } else {
-        // for (let x in colourPickerDiv.children) {
-        //     if (colourPickerDiv.children[x].tagName == "DIV") {
-        //         colourPickerDiv.removeChild(colourPickerDiv.children[x])
-        //     }
-        // }
         colourPickerDiv.innerHTML = '<button onclick="addColourPicker();">Add Colour</button>';
         let arr = [];
         for (let i in pickers) {
