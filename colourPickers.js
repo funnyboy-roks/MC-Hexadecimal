@@ -2,12 +2,17 @@ const colourPickerDiv = document.querySelector('div.colour-pickers');
 const draggable = new Draggable.Sortable(document.querySelectorAll('div.colour-pickers'), {
     draggable: 'div.colour-picker'
 });
-// const droppable = new Draggable.Droppable(document.querySelectorAll('div.colour-pickers'), {
-//     draggable: 'div.colour-picker',
-//     // dropzone: 'div.colour-pickers'
-//   });
-
 let pickers = [];
+const idPrefix = "colour-picker";
+const deleteButtonHTML = `<button 
+class="small" style="
+height: 45px;
+width: 45px;" 
+title="Remove Colour" 
+onclick="removeColourPicker(this.id.substring(idPrefix.length));"
+><div class="title" style="color: #ff5555; text-shadow: 2px 2px #000a;">×</div>
+</button>`;
+
 draggable.on('sortable:stop', (sortableEvent) => {
     // updateColourPickers();
     console.log(sortableEvent.oldIndex, sortableEvent.newIndex)
@@ -19,8 +24,12 @@ draggable.on('sortable:stop', (sortableEvent) => {
 function addColourPicker() {
     var newDiv = document.createElement('div');
     newDiv.classList.add('colour-picker');
-    newDiv.innerHTML = `=Colour #${pickers.length+1}: <input type="color" id="i${pickers.length}" value="#000000" oninput="updateColourPicker(this.id.substring(1));"><a class="delete" title="Remove Colour" onclick="removeColourPicker(this.id.substring(1));">×</a>`
-    var newInput = newDiv.querySelector(`#i${pickers.length}`);
+    newDiv.innerHTML = `\u2630 Colour #${pickers.length+1}: 
+    <input type="color" 
+    id="${idPrefix + pickers.length}" 
+    value="#000000" 
+    oninput="updateColourPicker(this.id.substring(idPrefix.length));">` + deleteButtonHTML
+    var newInput = newDiv.querySelector(`#${idPrefix + pickers.length}`);
     colourPickerDiv.appendChild(newDiv);
     pickers.push({
         div: newDiv,
@@ -40,9 +49,9 @@ function colourPickersSwap(id1, id2){
     if(id1 == id2)
         return;
     var temp = pickers[id1];
-    pickers[id2].input.id = 'i' + id1;
+    pickers[id2].input.id = idPrefix + id1;
     pickers[id1] = pickers[id2];
-    temp.input.id = 'i' + id2;
+    temp.input.id = idPrefix + id2;
     pickers[id2] = temp;
 
 }
@@ -71,7 +80,7 @@ function updateColourPickers() {
             console.log(i);
             let newDiv = document.createElement('div');
             newDiv.classList.add('colour-picker');
-            newDiv.innerHTML = `=Colour #${i+1}: <input type="color" id="color-picker-${i}" value="${pickers[i].value}" oninput="updateColourPicker(${i});"><a class="delete" title="Remove Colour" onclick="removeColourPicker(${i});">×</a>`
+            newDiv.innerHTML = `\u2630 Colour #${i+1}: <input type="color" id="color-picker-${i}" value="${pickers[i].value}" oninput="updateColourPicker(${i});">` + deleteButtonHTML;
             newInput = newDiv.querySelector(`#color-picker-${i}`);
             colourPickerDiv.appendChild(newDiv);
             arr.push({

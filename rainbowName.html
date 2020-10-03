@@ -4,108 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
-        * {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        input[type="text"],
-        p {
-            width: 75%;
-        }
-
-        .l {
-            font-weight: bold;
-        }
-
-        .o {
-            font-style: italic;
-        }
-
-        .m {
-            text-decoration: line-through;
-        }
-
-        .n {
-            text-decoration: underline;
-        }
-
-        .n.m {
-            text-decoration: underline line-through;
-        }
-
-
-
-        .colour-pickers {
-            cursor: grab;
-
-        }
-
-        .draggable-source--is-dragging,
-        .draggable-source--is-dragging>* {
-            /* cursor: grabbing; */
-            background: #6668;
-        }
-
-        .draggable-container--is-dragging {
-            cursor: grabbing;
-        }
-
-        .out-only {
-            background: none;
-            outline: none;
-            border: none;
-            cursor: pointer;
-        }
-        .delete{
-            color: red;
-            font-size: 2em;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="rainbowNameStyle.css">
     <title>Gradient Name</title>
 </head>
 
 <body>
     <div class="content">
         <div class="colour-pickers">
-
-            <button onclick="addColourPicker();">Add Colour</button>
-
+            <button onclick="addColourPicker();">
+                <div class="title">Add Colour</div>
+            </button>
         </div>
 
         <div id="input">
-            <label class="l" id="bold">Bold: </label>
-            <input type="checkbox" name="formatting" id="bold"
-                oninput="createGradFromName(document.querySelector('#nameField').value);">
-
-            <label class="o" id="italics">Italics: </label>
-            <input type="checkbox" name="formatting" id="italics"
-                oninput="createGradFromName(document.querySelector('#nameField').value);">
-
-            <label class="m" id="strikethrough">Strikethrough: </label>
-            <input type="checkbox" name="formatting" id="strikethrough"
-                oninput="createGradFromName(document.querySelector('#nameField').value);">
-
-            <label class="n" id="underline">Underline: </label>
-            <input type="checkbox" name="formatting" id="underline"
-                oninput="createGradFromName(document.querySelector('#nameField').value);">
-            <br>
-            Name: <input type="text" id="nameField" oninput="createGradFromName(this.value);">
+            <label class="l format">Bold
+                <input type="checkbox" id="bold" oninput="createGradFromName(nameField.value);">
+                <span class="checkmark"></span>
+            </label>
+            <label class="o format">Italics
+                <input type="checkbox" id="italics" oninput="createGradFromName(nameField.value);">
+                <span class="checkmark"></span>
+            </label>
+            <label class="m format">Strikethrough
+                <input type="checkbox" id="strikethrough" oninput="createGradFromName(nameField.value);">
+                <span class="checkmark"></span>
+            </label>
+            <label class="n format">Underline
+                <input type="checkbox" id="underline" oninput="createGradFromName(nameField.value);">
+                <span class="checkmark"></span>
+            </label>
         </div>
+        <label id="text-in">Text: <input type="text" id="nameField" oninput="createGradFromName(this.value);"></label>
 
-        <p id="out-coloured"></p>
-        <label id="colours">Colours: </label><input id="out-colour" class="out-only" type="text" readonly
-            title="Click To Copy" onclick="
-    this.select();
-    document.execCommand('copy');
-    ">
-        <label id="nick">/nick Command: </label><input id="out-nick" class="out-only" type="text" readonly
-            title="Click To Copy" onclick="
-    this.select();
-    document.execCommand('copy');
-    ">
+        <p id="out-coloured">Output</p>
+
+        <label id="colours">Colours (Click To Copy): </label>
+        <input id="out-colour" class="out-only" type="text" readonly title="Click To Copy" onclick="
+                this.select();
+                document.execCommand('copy');
+                ">
+        <label id="nick">/nick Command (Click To Copy): </label>
+        <input id="out-nick" class="out-only" type="text" readonly title="Click To Copy" onclick="
+                this.select();
+                document.execCommand('copy');
+                ">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/draggable.bundle.js"></script>

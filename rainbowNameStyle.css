@@ -1,0 +1,223 @@
+/* I don't feel like changing up the style.css so I'm just going to use a new file */
+@font-face {
+    font-family: 'MinecraftFont';
+    src: url('/font/minecraft.woff') format('woff'),
+        url('/font/minecraft.woff2') format('woff2')
+}
+
+* {
+    font-family: 'MinecraftFont', 'Montserrat', sans-serif;
+    outline: none;
+    color: white;
+}
+
+html {
+    background: url('mc-bg.png')
+}
+
+.colour-pickers {
+    cursor: grab;
+}
+
+.colour-picker {
+    user-select: none;
+}
+
+.out-only {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 2px solid white;
+    border-radius: 5px;
+    width: 30vw;
+}
+
+.delete {
+    color: red;
+}
+
+label {
+    display: block;
+    font-size: 2em;
+}
+
+#input{
+    background: #000a;
+    width: 30vw;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.format {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    max-width: calc(100% - 15px);
+}
+
+.format:hover{
+    background: #6663;
+}
+
+#text-in{
+    padding: 10px;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #000;
+    border: 1px solid lightgrey;
+}
+
+.format input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.format:hover input~.checkmark {
+    background-color: #111;
+}
+
+.format input:checked~.checkmark {
+    background-color: #000;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.format input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.format .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#nameField {
+    border-radius: 0px;
+    background: black;
+    border: 2px solid lightgrey;
+    font-size: 1em;
+}
+
+#nameField::selection{
+    background: blue;
+}
+
+#out-coloured {
+    font-size: 3rem;
+}
+
+input[type='checkbox'] {
+    width: 2em;
+}
+
+button {
+    font-size: 18pt;
+    --btn-size: 45pt;
+    height: var(--btn-size);
+    width: calc(var(--btn-size) * 5);
+    /* font-size: 1.5em;
+    height: 3em;
+    width: 25%; */
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+    background: #999 url("https://i.ibb.co/rb2TWXL/bgbtn.png") center/cover;
+    image-rendering: pixelated;
+    border: 2px solid #000;
+    padding: 0;
+    margin: 10px;
+}
+
+button .title {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddd;
+    text-shadow: 3px 3px #000a;
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #fff7;
+}
+
+
+button:hover .title {
+    background-color: rgba(100, 100, 255, 0.45);
+    text-shadow: 2px 2px #202013cc;
+    color: #ffffa0;
+}
+
+button:active .title {
+    box-shadow: inset -2px -4px #0004, inset 2px 2px #fff5;
+}
+
+
+/* Styling For Element Dragging */
+.draggable-source--is-dragging,
+.draggable-source--is-dragging>* {
+    background: #6668;
+}
+
+.draggable-container--is-dragging {
+    cursor: grabbing;
+}
+
+
+
+
+/* Formatting for displaying text */
+/* Bold */
+.l {
+    font-weight: bold;
+}
+
+/* Italics */
+.o {
+    font-style: italic;
+}
+
+/* Strikethrough */
+.m {
+    text-decoration: line-through;
+}
+
+/* Underline */
+.n {
+    text-decoration: underline;
+}
+
+/* Underline & Strikethrough */
+.n.m {
+    text-decoration: underline line-through;
+}

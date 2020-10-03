@@ -1,5 +1,6 @@
 const coloursOutLabel = document.querySelector("#colours");
-const nickOutLabel = document.querySelector("#nick")
+const nickOutLabel = document.querySelector("#nick");
+const nameField = document.querySelector('#nameField');
 
 function hexStoF(hexidecimalString) {
     // Takes a 2 digit hex value as a string (ex: "2f")
@@ -116,11 +117,26 @@ function createGradFromName(name){
     }
 
     
-    coloursOutLabel.innerText = `Colours (${colourCodeStr.length} chars):`;
-    nickOutLabel.innerText = `/nick Command (${("/nick + " + colourCodeStr).length} chars):`;
+    coloursOutLabel.innerText = `Colours (${colourCodeStr.length} chars) (Click To Copy):`;
+    nickOutLabel.innerText = `/nick Command (${("/nick + " + colourCodeStr).length} chars) (Click To Copy):`;
+
     document.querySelector("#out-coloured").innerHTML = colouredString;
-    document.querySelector("#out-colour").value = colourCodeStr;
-    document.querySelector("#out-nick").value = "/nick " + colourCodeStr;
+
+    let outColourElem = document.querySelector("#out-colour")
+    outColourElem.value = colourCodeStr;
+    if(colourCodeStr.length > 250){
+        outColourElem.style.color = '#f55';
+    }else{
+        outColourElem.style.color = '#fff';
+    }
+
+    let outNickElem = document.querySelector("#out-nick")
+    outNickElem.value = "/nick " + colourCodeStr;
+    if(("/nick " + colourCodeStr).length > 250){
+        outNickElem.style.color = '#f55';
+    }else{
+        outNickElem.style.color = '#fff';
+    }
 
     return colouredString;
 
