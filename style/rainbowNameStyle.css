@@ -1,8 +1,8 @@
 /* I don't feel like changing up the style.css so I'm just going to use a new file */
 @font-face {
     font-family: 'MinecraftFont';
-    src: url('/font/minecraft.woff') format('woff'),
-        url('/font/minecraft.woff2') format('woff2')
+    src: url('./font/minecraft.woff') format('woff'),
+        url('./font/minecraft.woff2') format('woff2')
 }
 
 * {
@@ -12,7 +12,7 @@
 }
 
 html {
-    background: url('mc-bg.png')
+    background: url('../img/mc-bg.png')
 }
 
 .colour-pickers {
