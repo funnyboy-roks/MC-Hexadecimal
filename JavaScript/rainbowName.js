@@ -2,6 +2,8 @@ const coloursOutLabel = document.querySelector("#colours");
 const nickOutLabel = document.querySelector("#nick");
 const nameField = document.querySelector('#nameField');
 
+setupFromSearch();
+
 function hexStoF(hexidecimalString) {
     // Takes a 2 digit hex value as a string (ex: "2f")
     // Returns the value as a float from 0-1 (ex: 0.1843)
