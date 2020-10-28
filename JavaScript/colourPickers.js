@@ -19,7 +19,7 @@ let search = {};
 
 draggable.on('sortable:stop', (sortableEvent) => {
 	// updateColourPickers();
-	console.log(sortableEvent.oldIndex, sortableEvent.newIndex);
+	// console.log(sortableEvent.oldIndex, sortableEvent.newIndex);
 	colourPickersSwap(sortableEvent.oldIndex, sortableEvent.newIndex);
 	createGradFromName(document.querySelector('#nameField').value);
 	// console.log(draggable);
@@ -35,7 +35,6 @@ function addColourPicker(colour = null) {
     oninput="updateColourPicker(this.id.substring(idPrefix.length));">` +
 		deleteButtonHTML;
 	var newInput = newDiv.querySelector(`#${idPrefix + pickers.length}`);
-	console.log(colour || '000000');
 	newInput.value = '#' + (colour || '000000');
 	colourPickerDiv.appendChild(newDiv);
 	pickers.push({
@@ -45,11 +44,17 @@ function addColourPicker(colour = null) {
 		value: newInput.value,
 		pos: pickers.length,
 	});
+	createGradFromName(document.querySelector('#nameField').value);
+	updateSearch();
+	setHash();
 }
 
 function updateColourPicker(id) {
 	pickers[id].value = pickers[id].input.value;
 	createGradFromName(document.querySelector('#nameField').value);
+	
+	updateSearch();
+	setHash();
 }
 
 function colourPickersSwap(id1, id2) {
@@ -59,6 +64,9 @@ function colourPickersSwap(id1, id2) {
 	pickers[id1] = pickers[id2];
 	temp.input.id = idPrefix + id2;
 	pickers[id2] = temp;
+	
+	updateSearch();
+	setHash();
 }
 
 function getPickerColours() {
@@ -72,6 +80,9 @@ function getPickerColours() {
 function removeColourPicker(id) {
 	pickers.splice(id, 1);
 	updateColourPickers();
+
+	updateSearch();
+	setHash();
 }
 
 function updateColourPickers() {
@@ -83,7 +94,6 @@ function updateColourPickers() {
 		let arr = [];
 		for (let i in pickers) {
 			i = parseInt(i);
-			console.log(i);
 			let newDiv = document.createElement('div');
 			newDiv.classList.add('colour-picker');
 			newDiv.innerHTML =
@@ -107,16 +117,20 @@ function updateColourPickers() {
 }
 
 function setupFromSearch() {
-	if (location.hash.replace('#', '').split('&').length < 0) return;
+	
+	if (location.hash.replace('#', '').split('&').length <= 1) return;
 	location.hash
 		.replace('#', '')
 		.split('&')
 		.forEach((s) => {
-			console.log(s);
 			search[s.split('=')[0]] = s.split('=')[1];
 			// addColourPicker(c);
 		});
+	
 	search.colours.replace(/#/g, '').split('-').forEach(addColourPicker);
+	document.querySelector('#nameField').value = search.text;
+
+	createGradFromName(search.text);
 }
 
 function setHash() {
@@ -124,5 +138,11 @@ function setHash() {
 	for (let x of Object.keys(search)) {
 		searchStrings.push(`${x}=${search[x]}`);
 	}
-	return location.hash = '#' + searchStrings.join('&');
+	return (location.hash = '#' + searchStrings.join('&'));
+}
+
+function updateSearch() {
+	search.colours = getPickerColours().join('-');
+	search.text = document.querySelector('#nameField').value;
+	return search;
 }
