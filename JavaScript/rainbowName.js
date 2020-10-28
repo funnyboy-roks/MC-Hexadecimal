@@ -1,6 +1,7 @@
 const coloursOutLabel = document.querySelector("#colours");
 const nickOutLabel = document.querySelector("#nick");
 const nameField = document.querySelector('#nameField');
+const gamma = 2.2;
 
 setupFromSearch();
 
@@ -26,7 +27,6 @@ function ftoHexS(floatCol) {
     return asHexStr;
 }
 
-const gamma = 2.2;
 
 function createLinearGradient(count, coloursArr) {
     var rainbow = new Rainbow(); 

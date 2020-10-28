@@ -1,12 +1,12 @@
-const colourPickerDiv = document.querySelector("div.colour-pickers");
+const colourPickerDiv = document.querySelector('div.colour-pickers');
 const draggable = new Draggable.Sortable(
-	document.querySelectorAll("div.colour-pickers"),
+	document.querySelectorAll('div.colour-pickers'),
 	{
-		draggable: "div.colour-picker",
+		draggable: 'div.colour-picker',
 	}
 );
 let pickers = [];
-const idPrefix = "colour-picker";
+const idPrefix = 'colour-picker';
 const deleteButtonHTML = `<button 
 class="small" style="
 height: 45px;
@@ -17,27 +17,26 @@ onclick="removeColourPicker(this.id.substring(idPrefix.length));"
 </button>`;
 let search = {};
 
-draggable.on("sortable:stop", (sortableEvent) => {
+draggable.on('sortable:stop', (sortableEvent) => {
 	// updateColourPickers();
 	console.log(sortableEvent.oldIndex, sortableEvent.newIndex);
 	colourPickersSwap(sortableEvent.oldIndex, sortableEvent.newIndex);
-	createGradFromName(document.querySelector("#nameField").value);
+	createGradFromName(document.querySelector('#nameField').value);
 	// console.log(draggable);
 });
 
 function addColourPicker(colour = null) {
-	var newDiv = document.createElement("div");
-	newDiv.classList.add("colour-picker");
+	var newDiv = document.createElement('div');
+	newDiv.classList.add('colour-picker');
 	newDiv.innerHTML =
 		`\u2630 Colour #${pickers.length + 1}: 
     <input type="color" 
     id="${idPrefix + pickers.length}" 
-    value="${colour | "000000"}" 
     oninput="updateColourPicker(this.id.substring(idPrefix.length));">` +
 		deleteButtonHTML;
 	var newInput = newDiv.querySelector(`#${idPrefix + pickers.length}`);
-	console.log(colour);
-	newInput.value = "#" + colour;
+	console.log(colour || '000000');
+	newInput.value = '#' + (colour || '000000');
 	colourPickerDiv.appendChild(newDiv);
 	pickers.push({
 		div: newDiv,
@@ -50,7 +49,7 @@ function addColourPicker(colour = null) {
 
 function updateColourPicker(id) {
 	pickers[id].value = pickers[id].input.value;
-	createGradFromName(document.querySelector("#nameField").value);
+	createGradFromName(document.querySelector('#nameField').value);
 }
 
 function colourPickersSwap(id1, id2) {
@@ -85,8 +84,8 @@ function updateColourPickers() {
 		for (let i in pickers) {
 			i = parseInt(i);
 			console.log(i);
-			let newDiv = document.createElement("div");
-			newDiv.classList.add("colour-picker");
+			let newDiv = document.createElement('div');
+			newDiv.classList.add('colour-picker');
 			newDiv.innerHTML =
 				`\u2630 Colour #${
 					i + 1
@@ -108,15 +107,22 @@ function updateColourPickers() {
 }
 
 function setupFromSearch() {
-    if(location.hash.replace('#', '').split('&').length < 0) return;
+	if (location.hash.replace('#', '').split('&').length < 0) return;
 	location.hash
-		.replace('#', "")
-		.split("&")
+		.replace('#', '')
+		.split('&')
 		.forEach((s) => {
-            console.log(s);
-            search[s.split('=')[0]] = s.split('=')[1]
-            // addColourPicker(c);
-        });
-    search.colours.replace(/#/g, '').split('-').forEach(addColourPicker)
+			console.log(s);
+			search[s.split('=')[0]] = s.split('=')[1];
+			// addColourPicker(c);
+		});
+	search.colours.replace(/#/g, '').split('-').forEach(addColourPicker);
+}
 
+function setHash() {
+	let searchStrings = [];
+	for (let x of Object.keys(search)) {
+		searchStrings.push(`${x}=${search[x]}`);
+	}
+	return location.hash = '#' + searchStrings.join('&');
 }

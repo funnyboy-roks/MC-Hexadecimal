@@ -9,13 +9,15 @@
 </head>
 
 <body>
-    <div class="content">
+    <div class="colours">
         <div class="colour-pickers">
             <button onclick="addColourPicker();">
                 <div class="title">Add Colour</div>
             </button>
         </div>
 
+    </div>
+    <div class="right">
         <div id="input">
             <label class="l format">Bold
                 <input type="checkbox" id="bold" oninput="createGradFromName(nameField.value);">
@@ -35,7 +37,6 @@
             </label>
         </div>
         <label id="text-in">Text: <input type="text" id="nameField" oninput="createGradFromName(this.value);"></label>
-
         <p id="out-coloured">Output</p>
 
         <label id="colours">Colours (Click To Copy): </label>

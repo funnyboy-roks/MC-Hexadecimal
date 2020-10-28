@@ -15,6 +15,22 @@ html {
     background: url('../img/mc-bg.png')
 }
 
+body{
+    display: flex;
+}
+
+.colours{
+    width: 50%;
+}
+
+.right{
+    width: 50%;
+}
+
+.right *{
+    margin: auto;
+}
+
 .colour-pickers {
     cursor: grab;
 }
