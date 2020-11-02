@@ -64,7 +64,7 @@ function createLinearGradient(count, coloursArr) {
 			hexColour += ftoHexS(colour[j]); // Convert back to hex
 		}
 
-		hexCodes.push('#' + hexColour.replace(/0/g, '1'));
+		hexCodes.push('#' + hexColour);
 	}
 	return hexCodes;
 }

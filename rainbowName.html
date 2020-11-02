@@ -20,19 +20,19 @@
     <div class="right">
         <div id="input">
             <label class="l format">Bold
-                <input type="checkbox" id="bold" oninput="createGradFromName(nameField.value);">
+                <input type="checkbox" id="bold" oninput="formatChanged(); createGradFromName(nameField.value);">
                 <span class="checkmark"></span>
             </label>
             <label class="o format">Italics
-                <input type="checkbox" id="italics" oninput="createGradFromName(nameField.value);">
+                <input type="checkbox" id="italics" oninput="formatChanged(); createGradFromName(nameField.value);">
                 <span class="checkmark"></span>
             </label>
             <label class="m format">Strikethrough
-                <input type="checkbox" id="strikethrough" oninput="createGradFromName(nameField.value);">
+                <input type="checkbox" id="strikethrough" oninput="formatChanged(); createGradFromName(nameField.value);">
                 <span class="checkmark"></span>
             </label>
             <label class="n format">Underline
-                <input type="checkbox" id="underline" oninput="createGradFromName(nameField.value);">
+                <input type="checkbox" id="underline" oninput="formatChanged(); createGradFromName(nameField.value);">
                 <span class="checkmark"></span>
             </label>
         </div>

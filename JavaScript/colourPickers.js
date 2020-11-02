@@ -129,6 +129,19 @@ function setupFromSearch() {
 	
 	search.colours.replace(/#/g, '').split('-').forEach(addColourPicker);
 	document.querySelector('#nameField').value = search.text;
+	// console.log(search);
+	if(!search.format){search.format = ''}
+	// if(!search.format.match(/[lomn]/g)){search.format = ''};
+	search.format = dedupe(search.format.replace(/[^lomn]/g, ''));
+
+	for(let x of document.querySelector('#input').children){
+		console.log(x);
+		if(search.format.includes(x.classList[0])){
+			x.children[0].checked = true;
+		}else{
+			x.children[0].checked = false;
+		}
+	}
 
 	createGradFromName(search.text);
 }
@@ -144,5 +157,29 @@ function setHash() {
 function updateSearch() {
 	search.colours = getPickerColours().join('-');
 	search.text = document.querySelector('#nameField').value;
+	search.format = dedupe((search.format + '').replace(/undefined|[^lomn]/g, ''));
 	return search;
+}
+
+function dedupe(s){
+	let sArr = [];
+	for(let x of s){
+		if(!sArr.includes(x)){
+			sArr.push(x);
+		}
+	}
+	return sArr.join('');
+}
+
+function formatChanged(){
+	let temp = '';
+	for(let x of document.querySelector('#input').children){
+		if(x.children[0].checked){
+			temp += x.classList[0];
+		}
+	}
+	if(temp != search.format){
+		search.format = dedupe(temp)
+	}
+	setHash();
 }
