@@ -49,7 +49,11 @@
                 this.select();
                 document.execCommand('copy');
                 ">
+
+
     </div>
+
+    <button id="clear" onclick="document.querySelector('#nameField').value = ''; location.hash = ''; location.reload();">× CLEAR ALL</button>
 
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/draggable.bundle.js"></script>
     <script src="./JavaScript/rainbowvis.js"></script>

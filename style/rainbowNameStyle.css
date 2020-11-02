@@ -209,7 +209,13 @@ button:active .title {
     cursor: grabbing;
 }
 
-
+#clear{
+    position: absolute;
+    bottom: 2em;
+    right: 2em;
+    font-size: 2em;
+    color: #a00;
+}
 
 
 /* Formatting for displaying text */
