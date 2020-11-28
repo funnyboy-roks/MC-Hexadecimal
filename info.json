@@ -1,0 +1,12 @@
+{
+	"name": "MC Hexadecimal",
+	"pinned": false,
+	"long_description": "A small web app that converts normal hexadecimal values into a custom hexadecimal colour code used on the FarLands Minecraft server",
+	"featured_langs": ["JavaScript", "HTML", "CSS"],
+	"links": [
+		{
+			"label": "Production",
+			"url": "https://funnyboyroks.com/MC-Hexadecimal/"
+		}
+	]
+}
