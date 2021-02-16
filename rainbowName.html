@@ -28,7 +28,8 @@
                 <span class="checkmark"></span>
             </label>
             <label class="m format">Strikethrough
-                <input type="checkbox" id="strikethrough" oninput="formatChanged(); createGradFromName(nameField.value);">
+                <input type="checkbox" id="strikethrough"
+                    oninput="formatChanged(); createGradFromName(nameField.value);">
                 <span class="checkmark"></span>
             </label>
             <label class="n format">Underline
@@ -36,24 +37,32 @@
                 <span class="checkmark"></span>
             </label>
         </div>
-        <label id="text-in">Text: <input type="text" id="nameField" oninput="updateSearch(); setHash();createGradFromName(this.value); "></label>
+        <label id="text-in">Text: <input class="mc-text" type="text" id="nameField"
+                oninput="updateSearch(); setHash();createGradFromName(this.value); "></label>
         <p id="out-coloured">Output</p>
 
         <label id="colours">Colours (Click To Copy): </label>
-        <input id="out-colour" class="out-only" type="text" readonly title="Click To Copy" onclick="
-                this.select();
-                document.execCommand('copy');
-                ">
+        <input id="out-colour" class="out-only mc-text copy-on-click" type="text" readonly title="Click To Copy">
         <label id="nick">/nick Command (Click To Copy): </label>
-        <input id="out-nick" class="out-only" type="text" readonly title="Click To Copy" onclick="
-                this.select();
-                document.execCommand('copy');
-                ">
+        <input id="out-nick" class="out-only mc-text copy-on-click" type="text" readonly title="Click To Copy">
 
 
     </div>
 
-    <button id="clear" onclick="document.querySelector('#nameField').value = ''; location.hash = ''; location.reload();">× CLEAR ALL</button>
+    <div class="bottom-left">
+        <button id="clear"
+            onclick="document.querySelector('#nameField').value = ''; location.hash = ''; location.reload();">× CLEAR
+            ALL</button>
+        <a href="#colours=#ff0000-#ff8000-#ffff00-#00ff00-#0080ff-#8000ff&" title="Use rainbow colours preset" onclick="location.reload();"
+            class="rainbow"><span style="color: #ff0000" class="">R</span><span style="color: #ff7600"
+                class="">a</span><span style="color: #ffdf00" class="">i</span><span style="color: #baff00"
+                class="">n</span><span style="color: #00df9b" class="">b</span><span style="color: #3876ff"
+                class="">o</span><span style="color: #8000ff" class="">w</span></a>
+
+    </div>
+    <a href="https://www.github.com/funnyboy-roks">
+        <img src="./img/GitHub-Mark-Light-120px-plus.png" alt="GitHub" id="github-logo" />
+    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/draggable.bundle.js"></script>
     <script src="./JavaScript/rainbowvis.js"></script>

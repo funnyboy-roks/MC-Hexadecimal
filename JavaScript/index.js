@@ -4,8 +4,8 @@ onInputGiven(inField.value);
 
 function onInputGiven(value) {
   value = value.replace(/[^0-9a-fA-F#]/g, '');
-  let maxLen = value.startsWith('#') ? 7 : 6;
-  inField.value = value.substring(0, maxLen)
+  // let maxLen = value.startsWith('#') ? 7 : 6;
+  inField.value = value.substring(0, 7)
 
   if (value.startsWith('#')) {
     inField.value = '#' + value.substring(1).replace(/#/g, '');
@@ -36,4 +36,10 @@ function onInputGiven(value) {
   location.hash = value;
   document.querySelector("html").style.background = value;
   document.querySelector("#out").innerText = output;
+}
+
+function threeCharHexToSixChar(hex){
+  let outStr = '';
+  hex.replace(/#/g, '').split('').forEach(x => {outStr += x + x});
+  return outStr;
 }

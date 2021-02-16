@@ -1,53 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
 }
 
 html {
-  background: #666;
+	background: #666;
 }
 
 .content {
-  width: 100vw;
-  height: 100vh;
-  vertical-align: center;
+	width: 100vw;
+	height: 100vh;
+	vertical-align: center;
 }
 
 input,
 button,
 #out {
-  min-width: 75vw;
-  width: 100%;
-  text-align: center;
-  display: block;
-  font-size: 4em;
+	min-width: 75vw;
+	width: 100%;
+	text-align: center;
+	display: block;
+	font-size: 4em;
 }
 
-input{
-  background: #fff5;
-  outline: none;
-  border: none;
+input {
+	background: #fff5;
+	outline: none;
+	border: none;
 }
 
-#in-out{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#in-out {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-#grad-link{
-  font-size: 2em;
-  position: fixed;
-  bottom: 1em;
-  left: 1em;
-  color: white;
-  text-decoration: none;
+#grad-link {
+	font-size: 2em;
+	position: fixed;
+	bottom: 1em;
+	left: 1em;
+	color: white;
+	text-decoration: none;
 }
 
-#grad-link:hover{
-  text-decoration: underline;
+#grad-link:hover {
+	text-decoration: underline;
+}
+
+#github-logo {
+	width: 4em;
+	height: auto;
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+}
+#github-logo:hover {
+	filter: brightness(50%);
 }

@@ -2,8 +2,16 @@ const coloursOutLabel = document.querySelector('#colours');
 const nickOutLabel = document.querySelector('#nick');
 const nameField = document.querySelector('#nameField');
 const gamma = 2.2;
+let format = '&#r1r2g1g2b1b2';
+let minimise = false;
 
-setupFromSearch();
+window.onload = () => {
+	setupFromSearch();
+	document.querySelectorAll('.copy-on-click').forEach(elem => {elem.addEventListener('click', () => {
+		elem.select();
+		document.execCommand('copy');
+	})})
+}
 
 function hexStoF(hexidecimalString) {
 	// Takes a 2 digit hex value as a string (ex: "2f")
@@ -115,7 +123,7 @@ function createGradFromName(name) {
 	let colourCodeStr = '';
 	for (let i in colours) {
 		colouredString += `<span style="color: ${colours[i]}" class="${formattingClasses}">${name[i]}</span>`;
-		colourCodeStr += mcHex(colours[i]) + formattingCodes + name[i];
+		colourCodeStr += mcHex(colours[i], format, minimise, true) + formattingCodes + name[i];
 	}
 
 	coloursOutLabel.innerText = `Colours (${colourCodeStr.length} chars) (Click To Copy):`;
