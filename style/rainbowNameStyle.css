@@ -212,14 +212,18 @@ button:active .title {
 	color: #a00;
 }
 
-.rainbow{
-    font-size: 2rem;
+.rainbow {
+	font-size: 2rem;
 }
 
-.bottom-left{
-    position: absolute;
-    bottom: 2em;
-    left: 2em;
+.rainbow:hover {
+	filter: brightness(75%);
+}
+
+.bottom-left {
+	position: absolute;
+	bottom: 2em;
+	left: 2em;
 }
 
 #github-logo {
