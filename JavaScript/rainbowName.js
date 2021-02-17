@@ -3,7 +3,17 @@ const nickOutLabel = document.querySelector('#nick');
 const nameField = document.querySelector('#nameField');
 const gamma = 2.2;
 let format = '&#r1r2g1g2b1b2';
-let minimise = false;
+let minimise = true;
+let mcDefaultColours = true;
+
+const defaultSettings = {
+	farlands: () => {format='&#r1r2g1g2b1b2',minimise=true,mcDefaultColours=true},
+	essentials: () => {format='&#r1r2g1g2b1b2';minimise=false;mcDefaultColours=true},
+	majekPlugins: () => {format='&#r1r2g1g2b1b2';minimise=false;mcDefaultColours=true},
+	hexOnly: () => {format='#r1r2g1g2b1b2';minimise=false;mcDefaultColours=false},
+	minHexOnly: () => {format='#r1r2g1g2b1b2';minimise=true;mcDefaultColours=false},
+	minHexOnly: () => {format='#r1r2g1g2b1b2';minimise=true;mcDefaultColours=false},
+}
 
 window.onload = () => {
 	setupFromSearch();
@@ -11,6 +21,12 @@ window.onload = () => {
 		elem.select();
 		document.execCommand('copy');
 	})})
+	console.log('Hello! There\'s some features that I haven\'t setup the front end part of, but you can still use from this console!');
+	console.log('1. Alternate format\nI\'ve added the ability to use an alternate format, instead of the default: `&#rrggbb`.\nI\'ve not added a way to change this on the site yet, but you can do so by changing the `format` variable.  For Example: `format = \'#r1r2g1g2b1b2\'` would format the output as #rrggbb.');
+	console.log('2. Disable minimising\nYou can disable the minimising of the hex codes(#rrggbb -> #rgb) by setting the `minimise` variable to false. `minimise = false`');
+	console.log('3. Disable MC\'s default colours (&#) in the output\nYou can do this by setting the `mcDefaultColours` variable to false: `mcDefaultColours = false`');
+	console.log('There are some default values that you can run in the `defaultSettings` object.  These are methods that will set the variables to what are used in the defualt that you choose.');
+	console.log('You\'ll have to refresh the page after each of these changes are made.');
 }
 
 function hexStoF(hexidecimalString) {
@@ -123,7 +139,7 @@ function createGradFromName(name) {
 	let colourCodeStr = '';
 	for (let i in colours) {
 		colouredString += `<span style="color: ${colours[i]}" class="${formattingClasses}">${name[i]}</span>`;
-		colourCodeStr += mcHex(colours[i], format, minimise, true) + formattingCodes + name[i];
+		colourCodeStr += mcHex(colours[i], format, minimise, mcDefaultColours) + formattingCodes + name[i];
 	}
 
 	coloursOutLabel.innerText = `Colours (${colourCodeStr.length} chars) (Click To Copy):`;
