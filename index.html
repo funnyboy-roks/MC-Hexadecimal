@@ -5,10 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/rainbowNameStyle.css">
+    <style>
+        #unmaintained {
+            top: 0;
+            left: 0;
+            background: #000a;
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            width: 100vw;
+            font-size: 3rem;
+            padding: 2rem;
+            z-index: 1000;
+        }
+
+        #unmaintained button { 
+            width: auto;
+            padding: 0 2rem;
+            margin-right: 4rem;
+        }
+
+        #overlay {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            z-index: 999;
+        }
+    </style>
     <title>Gradient Text Generator</title>
 </head>
 
 <body>
+    <div id="unmaintained">
+        This project is no longer maintained <button id="close" onclick="document.querySelector('#unmaintained').remove(); document.querySelector('#overlay').remove()">Okay</button>
+    </div>
+    <div id="overlay" onclick="document.querySelector('#unmaintained').remove(); document.querySelector('#overlay').remove()"></div>
     <div class="colours">
         <div class="colour-pickers">
             <button onclick="addColourPicker();">
